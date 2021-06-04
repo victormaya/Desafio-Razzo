@@ -65,12 +65,14 @@ export const Card = styled.div`
       font-size: 16px;
       line-height: 23px;
       cursor: pointer;
+      font-weight: bold;
     }
     > p {
       font-size: 16px;
       line-height: 23px;
       color: #ffffff;
       text-align: center;
+      font-weight: bold;
     }
   }
 

@@ -4,40 +4,23 @@ import {
   Container,
   Header,
   Section,
-  DivInput,
-  DivCards,
   SectionStoreBag,
   BagList,
 } from './css/styled';
 
-import StoreCard from './components/StoreCard/StoreCard';
 import CardBag from './components/CardBag/CardBag';
 import Total from './components/Total/Total';
-
-import axios from 'axios';
+import InputStore from './components/InputStore/InputStore';
+import Products from './components/Products/Products';
 
 import logo from './assets/logo.png';
 import bag from './assets/bag.svg';
 import user from './assets/user.png';
 import arrowDown from './assets/arrow-down.svg';
+import arrowLeft from './assets/arrow-left.png';
 
 const App = () => {
-  const [storeData, setStoreData] = useState([]);
-
-  const searchStores = async () => {
-    try {
-      const { data } = await axios.get(
-        'https://api-test-carrinho.herokuapp.com/business'
-      );
-      setStoreData(data.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    searchStores();
-  }, []);
+  const [page, setPage] = useState('store');
 
   return (
     <>
@@ -63,39 +46,22 @@ const App = () => {
             </div>
           </Header>
 
-          <Section>
-            <a className="home">Home</a>
-            <div className="arrow-right">
-              <img src={arrowDown} />
+          <Section page={page}>
+            <div className="arrow-left" onClick={() => setPage('store')}>
+              <img src={arrowLeft} />
             </div>
-            <a className="sacola">Sacola</a>
+            <div>
+              <a className="home">Home</a>
+              <div className="arrow-right">
+                <img src={arrowDown} />
+              </div>
+              <a className="sacola">Sacola</a>
+            </div>
           </Section>
 
           <SectionStoreBag>
-            {/* div abaixo terá que ser um componente */}
-            <div>
-              <DivInput>
-                <input placeholder="Buscar estabelecimento" />
-              </DivInput>
-
-              <DivCards>
-                {storeData.map((item) => {
-                  return (
-                    <>
-                      <StoreCard
-                        key={item._id}
-                        image={item.assets.logo}
-                        name={item.name}
-                        description={item.description}
-                        street_name={item.address.street_name}
-                        street_number={item.address.street_number}
-                        neighborhood={item.address.neighborhood}
-                      />
-                    </>
-                  );
-                })}
-              </DivCards>
-            </div>
+            {/* Componente que se tem a lista de lojas e de produtos */}
+            {page === 'store' ? <InputStore setPage={setPage} /> : <Products />}
 
             <BagList>
               <div className="items">

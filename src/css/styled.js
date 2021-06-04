@@ -64,10 +64,18 @@ export const Header = styled.header`
 
 export const Section = styled.section`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 30px;
   margin-bottom: 25px;
   padding-right: 55px;
+  > div {
+    display: flex;
+  }
+  .arrow-left {
+    opacity: ${(props) => (props.page === 'store' ? 0 : 1)};
+    cursor: ${(props) => (props.page === 'product' ? 'pointer' : 'default')};
+  }
   .arrow-right {
     margin: 0 15px;
     transform: rotate(-90deg);
@@ -84,34 +92,6 @@ export const Section = styled.section`
   }
 `;
 
-export const DivInput = styled.div`
-  input {
-    width: 305px;
-    height: 45px;
-    border: 2px solid #e5e4e6;
-    box-sizing: border-box;
-    border-radius: 7px;
-    padding: 13px 16px;
-    margin-bottom: 35px;
-    ::placeholder {
-      color: #d0c9d6;
-      font-family: sans-serif;
-      font-size: 13px;
-      line-height: 19px;
-    }
-  }
-`;
-
-export const DivCards = styled.div`
-  width: 904px;
-  max-height: 470px;
-  justify-content: space-between;
-  display: flex;
-  flex-wrap: wrap;
-  overflow-y: auto;
-  box-sizing: border-box;
-`;
-
 export const SectionStoreBag = styled.section`
   display: flex;
   justify-content: space-between;
@@ -123,7 +103,7 @@ export const SectionStoreBag = styled.section`
 
 export const BagList = styled.section`
   width: 423px;
-  height: 803px;
+  height: 780px;
   margin-right: 55px;
   padding: 40px 15px;
   display: flex;

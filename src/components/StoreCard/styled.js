@@ -9,6 +9,7 @@ export const Card = styled.div`
   border-radius: 7px;
   display: flex;
   margin-bottom: 23px;
+  cursor: pointer;
   .image-store {
     margin-right: 12px;
     background: url(${(props) => props.image}) no-repeat;
