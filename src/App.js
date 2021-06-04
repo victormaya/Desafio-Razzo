@@ -72,6 +72,7 @@ const App = () => {
           </Section>
 
           <SectionStoreBag>
+            {/* div abaixo terá que ser um componente */}
             <div>
               <DivInput>
                 <input placeholder="Buscar estabelecimento" />
