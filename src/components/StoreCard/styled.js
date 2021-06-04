@@ -8,7 +8,7 @@ export const Card = styled.div`
   box-sizing: border-box;
   border-radius: 7px;
   display: flex;
-
+  margin-bottom: 23px;
   .image-store {
     margin-right: 12px;
     background: url(${(props) => props.image}) no-repeat;
@@ -16,7 +16,6 @@ export const Card = styled.div`
 
     width: 68px;
     height: 68px;
-    background-color: pink;
   }
   .descriptions {
     display: flex;
@@ -29,7 +28,7 @@ export const Card = styled.div`
     color: #6d5d7a;
   }
   .store-type {
-    font-weight: 500;
+    font-weight: bold;
     font-size: 12px;
     line-height: 17px;
     color: #249cf2;

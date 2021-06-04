@@ -79,7 +79,86 @@ export const Section = styled.section`
     font-weight: 400;
   }
   .sacola {
-    font-weight: 500;
+    font-weight: bold;
     color: rgba(36, 156, 242, 1);
+  }
+`;
+
+export const DivInput = styled.div`
+  input {
+    width: 305px;
+    height: 45px;
+    border: 2px solid #e5e4e6;
+    box-sizing: border-box;
+    border-radius: 7px;
+    padding: 13px 16px;
+    margin-bottom: 35px;
+    ::placeholder {
+      color: #d0c9d6;
+      font-family: sans-serif;
+      font-size: 13px;
+      line-height: 19px;
+    }
+  }
+`;
+
+export const DivCards = styled.div`
+  width: 904px;
+  max-height: 470px;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  box-sizing: border-box;
+`;
+
+export const SectionStoreBag = styled.section`
+  display: flex;
+  justify-content: space-between;
+  > div {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const BagList = styled.section`
+  width: 423px;
+  height: 803px;
+  margin-right: 55px;
+  padding: 40px 15px;
+  display: flex;
+  flex-direction: column;
+  .items {
+    height: 475px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
+  .teste {
+    display: flex;
+    flex-grow: 1;
+    background: peru;
+    align-items: flex-end;
+  }
+  .continuar {
+    margin-top: 70px;
+    margin-bottom: 15px;
+  }
+  .continuar,
+  .finalizar {
+    width: 100%;
+    background: #e5e5e5;
+    border: none;
+    height: 50px;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 19px;
+    text-align: center;
+    color: #73657e;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+  .finalizar {
+    background: #249cf2;
+    color: white;
   }
 `;
