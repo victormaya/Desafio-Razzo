@@ -3,7 +3,7 @@ import { DivCards, DivInput } from './styled';
 import axios from 'axios';
 import StoreCard from '../StoreCard/StoreCard';
 
-const InputStore = ({ setPage }) => {
+const InputStore = ({ setPage, setStoreId }) => {
   const [storeData, setStoreData] = useState([]);
 
   const searchStores = async () => {
@@ -30,9 +30,11 @@ const InputStore = ({ setPage }) => {
       <DivCards>
         {storeData.map((item) => {
           return (
-            <div onClick={() => setPage('product')}>
+            <div
+              key={item._id}
+              onClick={() => [setPage('product'), setStoreId(item._id)]}
+            >
               <StoreCard
-                key={item._id}
                 image={item.assets.logo}
                 name={item.name}
                 description={item.description}

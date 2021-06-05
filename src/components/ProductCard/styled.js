@@ -13,6 +13,7 @@ export const Card = styled.div`
   box-sizing: border-box;
   text-align: center;
   margin-bottom: 25px;
+  margin-right: 35px;
   .image-product {
     width: 90px;
     height: 90px;

@@ -4,34 +4,42 @@ import axios from 'axios';
 import StoreCard from '../StoreCard/StoreCard';
 import ProductCard from '../ProductCard/ProductCard';
 
-const Products = ({}) => {
-  const [storeData, setStoreData] = useState([]);
+const Products = ({ storeId }) => {
+  const [productsData, setProductsData] = useState([]);
 
-  const searchStores = async () => {
+  const searchProducts = async () => {
     try {
       const { data } = await axios.get(
-        'https://api-test-carrinho.herokuapp.com/business'
+        `https://api-test-carrinho.herokuapp.com/product/business/${storeId}`
       );
-      setStoreData(data.data);
+      setProductsData(data.data);
+      console.log(data.data);
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    searchStores();
+    searchProducts();
   }, []);
 
   return (
     <div>
       <StoreCard />
       <DivCards>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {productsData.map((item) => {
+          return (
+            <ProductCard
+              key={item._id}
+              picture={item.imgs[1].url}
+              name={item.name}
+              items={item.description}
+              timeInicial={item.createdAt}
+              timeFinal={item.updatedAt}
+              value={item.pricing}
+            />
+          );
+        })}
       </DivCards>
     </div>
   );
