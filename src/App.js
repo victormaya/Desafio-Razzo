@@ -21,7 +21,7 @@ import arrowLeft from './assets/arrow-left.png';
 
 const App = () => {
   const [page, setPage] = useState('store');
-  const [storeId, setStoreId] = useState('');
+  const [currentStore, setCurrentStore] = useState();
 
   return (
     <>
@@ -63,9 +63,9 @@ const App = () => {
           <SectionStoreBag>
             {/* Componente que se tem a lista de lojas e de produtos */}
             {page === 'store' ? (
-              <InputStore setPage={setPage} setStoreId={setStoreId} />
+              <InputStore setPage={setPage} setCurrentStore={setCurrentStore} />
             ) : (
-              <Products storeId={storeId} />
+              <Products storeId={currentStore._id} currentStore={currentStore} />
             )}
 
             <BagList>
