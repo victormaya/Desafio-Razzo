@@ -4,8 +4,9 @@ import axios from 'axios';
 import StoreCard from '../StoreCard/StoreCard';
 import ProductCard from '../ProductCard/ProductCard';
 
-const Products = ({ storeId, currentStore }) => {
+const Products = ({ storeId, currentStore, addItemBag }) => {
   const [productsData, setProductsData] = useState([]);
+  
 
   const searchProducts = async () => {
     try {
@@ -43,6 +44,9 @@ const Products = ({ storeId, currentStore }) => {
               timeInicial={item.createdAt}
               timeFinal={item.updatedAt}
               value={item.pricing}
+              product={item}
+              addItemBag={addItemBag}
+              currentStore={currentStore}
             />
           );
         })}

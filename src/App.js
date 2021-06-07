@@ -22,6 +22,32 @@ import arrowLeft from './assets/arrow-left.png';
 const App = () => {
   const [page, setPage] = useState('store');
   const [currentStore, setCurrentStore] = useState();
+  const [itemsBag, setItemsBag] = useState([]);
+  const [itemsBagVisible, setItemsBagVisible] = useState([]);
+
+  const tratarArrays = (array) => {
+    let contador = [];
+    const setRepeticao = new Set(array);
+    const arraySemRepeticao = [...setRepeticao];
+    // console.log(arraySemRepeticao)
+    arraySemRepeticao.map((item) => {
+      let quantidadeElementos = array.filter(
+        (elemento) => elemento === item
+      ).length;
+      const novoObjeto = Object.assign(item, {
+        quantidade: quantidadeElementos,
+      });
+      contador.push(novoObjeto);
+    });
+    console.log(contador);
+    setItemsBagVisible(contador);
+  };
+
+  const addItemBag = (item) => {
+    let lista = [...itemsBag, item];
+    setItemsBag([...itemsBag, item]);
+    tratarArrays(lista);
+  };
 
   return (
     <>
@@ -65,12 +91,18 @@ const App = () => {
             {page === 'store' ? (
               <InputStore setPage={setPage} setCurrentStore={setCurrentStore} />
             ) : (
-              <Products storeId={currentStore._id} currentStore={currentStore} />
+              <Products
+                storeId={currentStore._id}
+                currentStore={currentStore}
+                addItemBag={addItemBag}
+              />
             )}
 
             <BagList>
               <div className="items">
-                <CardBag />
+                {itemsBagVisible.map((item) => {
+                  return <CardBag key={item._id} item={item} />;
+                })}
               </div>
               <Total />
               <button className="continuar">Continuar comprando</button>

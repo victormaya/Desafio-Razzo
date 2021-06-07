@@ -9,6 +9,9 @@ const ProductCard = ({
   timeFinal,
   value,
   picture,
+  product,
+  addItemBag,
+  currentStore,
 }) => {
   const [time, setTime] = useState();
   const [stringValue, setStringValue] = useState();
@@ -34,8 +37,14 @@ const ProductCard = ({
       <p className="value">{`R$ ${stringValue}`}</p>
       <div className="sum">
         <button>-</button>
-        <p>1</p>
-        <button>+</button>
+        <p>0</p>
+        <button
+          onClick={() =>
+            addItemBag(Object.assign(product, { lojaAtual: currentStore.name }))
+          }
+        >
+          +
+        </button>
       </div>
     </Card>
   );
