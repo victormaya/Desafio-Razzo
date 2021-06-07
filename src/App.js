@@ -59,7 +59,7 @@ const App = () => {
         <Container>
           <Header>
             <div className="start-items">
-              <div>
+              <div className='logo'>
                 <img src={logo} alt="Razzo" />
               </div>
               <a className="title-dashboard">Dashboard</a>

@@ -16,6 +16,11 @@ export const DivInput = styled.div`
       line-height: 19px;
     }
   }
+  @media (max-width: 1310px) {
+    input {
+      width: 210px;
+    }
+  }
 `;
 
 export const DivCards = styled.div`
@@ -26,4 +31,7 @@ export const DivCards = styled.div`
   flex-wrap: wrap;
   overflow-y: auto;
   box-sizing: border-box;
+  @media (max-width: 1310px) {
+    width: 300px;
+  }
 `;

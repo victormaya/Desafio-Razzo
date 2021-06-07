@@ -41,4 +41,9 @@ export const DivTotal = styled.div`
     line-height: 150%;
     color: #55b84b;
   }
+  @media (max-width: 1310px) {
+    hr {
+      width: 200px;
+    }
+  }
 `;

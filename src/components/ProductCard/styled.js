@@ -75,4 +75,7 @@ export const Card = styled.div`
       font-weight: bold;
     }
   }
+  @media (max-width: 780px) {
+    margin: 5px auto;
+  }
 `;
