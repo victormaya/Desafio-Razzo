@@ -37,7 +37,6 @@ const ProductCard = ({
       itemsBagVisible.map((item) => {
         if (item._id === id) {
           setQuantidade(item.quantidade);
-          console.log(item.quantidade ? item.quantidade : 'zero');
         }
       });
     } else {

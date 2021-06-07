@@ -29,7 +29,6 @@ const App = () => {
     let contador = [];
     const setRepeticao = new Set(array);
     const arraySemRepeticao = [...setRepeticao];
-    // console.log(arraySemRepeticao)
     arraySemRepeticao.map((item) => {
       let quantidadeElementos = array.filter(
         (elemento) => elemento === item
@@ -48,11 +47,9 @@ const App = () => {
     tratarArrays(lista);
   };
   const removeItemBag = (idItem) => {
-    // console.log(itemsBag);
     const found = itemsBag.find((item) => item._id === idItem);
     const elemento = itemsBag.indexOf(found);
     itemsBag.splice(elemento, 1);
-    // console.log(itemsBag);
     tratarArrays(itemsBag);
   };
 
@@ -121,7 +118,7 @@ const App = () => {
                   );
                 })}
               </div>
-              <Total />
+              <Total itemsBagVisible={itemsBagVisible} />
               <button className="continuar">Continuar comprando</button>
               <button className="finalizar">Confirmar a compra</button>
             </BagList>
