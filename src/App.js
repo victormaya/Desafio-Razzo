@@ -39,7 +39,6 @@ const App = () => {
       });
       contador.push(novoObjeto);
     });
-    console.log(contador);
     setItemsBagVisible(contador);
   };
 
@@ -47,6 +46,14 @@ const App = () => {
     let lista = [...itemsBag, item];
     setItemsBag([...itemsBag, item]);
     tratarArrays(lista);
+  };
+  const removeItemBag = (idItem) => {
+    // console.log(itemsBag);
+    const found = itemsBag.find((item) => item._id === idItem);
+    const elemento = itemsBag.indexOf(found);
+    itemsBag.splice(elemento, 1);
+    // console.log(itemsBag);
+    tratarArrays(itemsBag);
   };
 
   return (
@@ -92,16 +99,26 @@ const App = () => {
               <InputStore setPage={setPage} setCurrentStore={setCurrentStore} />
             ) : (
               <Products
+                itemsBagVisible={itemsBagVisible}
                 storeId={currentStore._id}
                 currentStore={currentStore}
                 addItemBag={addItemBag}
+                removeItemBag={removeItemBag}
               />
             )}
 
             <BagList>
               <div className="items">
                 {itemsBagVisible.map((item) => {
-                  return <CardBag key={item._id} item={item} />;
+                  return (
+                    <CardBag
+                      key={item._id}
+                      item={item}
+                      addItemBag={addItemBag}
+                      removeItemBag={removeItemBag}
+                      currentStore={currentStore}
+                    />
+                  );
                 })}
               </div>
               <Total />

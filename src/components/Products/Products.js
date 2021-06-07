@@ -4,9 +4,14 @@ import axios from 'axios';
 import StoreCard from '../StoreCard/StoreCard';
 import ProductCard from '../ProductCard/ProductCard';
 
-const Products = ({ storeId, currentStore, addItemBag }) => {
+const Products = ({
+  storeId,
+  currentStore,
+  addItemBag,
+  itemsBagVisible,
+  removeItemBag,
+}) => {
   const [productsData, setProductsData] = useState([]);
-  
 
   const searchProducts = async () => {
     try {
@@ -38,6 +43,7 @@ const Products = ({ storeId, currentStore, addItemBag }) => {
           return (
             <ProductCard
               key={item._id}
+              id={item._id}
               picture={item.imgs[1].url}
               name={item.name}
               items={item.description}
@@ -47,6 +53,8 @@ const Products = ({ storeId, currentStore, addItemBag }) => {
               product={item}
               addItemBag={addItemBag}
               currentStore={currentStore}
+              itemsBagVisible={itemsBagVisible}
+              removeItemBag={removeItemBag}
             />
           );
         })}

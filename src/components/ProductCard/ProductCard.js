@@ -3,6 +3,7 @@ import { Card } from './styled';
 import example from '../../assets/example.png';
 
 const ProductCard = ({
+  id,
   name,
   items,
   timeInicial,
@@ -12,9 +13,12 @@ const ProductCard = ({
   product,
   addItemBag,
   currentStore,
+  itemsBagVisible,
+  removeItemBag,
 }) => {
   const [time, setTime] = useState();
   const [stringValue, setStringValue] = useState();
+  const [quantidade, setQuantidade] = useState(0);
 
   useEffect(() => {
     const startTime = new Date(timeInicial);
@@ -26,7 +30,20 @@ const ProductCard = ({
     const newValue =
       String(value).substr(0, 2) + ',' + String(value).substr(-2);
     setStringValue(newValue);
-  });
+  }, []);
+
+  useEffect(() => {
+    if (itemsBagVisible.includes(product)) {
+      itemsBagVisible.map((item) => {
+        if (item._id === id) {
+          setQuantidade(item.quantidade);
+          console.log(item.quantidade ? item.quantidade : 'zero');
+        }
+      });
+    } else {
+      setQuantidade(0);
+    }
+  }, [itemsBagVisible]);
 
   return (
     <Card image={picture}>
@@ -36,8 +53,10 @@ const ProductCard = ({
       <p className="time">{`Tempo de preparo: ${time}min`}</p>
       <p className="value">{`R$ ${stringValue}`}</p>
       <div className="sum">
-        <button>-</button>
-        <p>0</p>
+        <button onClick={() => removeItemBag(id)} disabled={quantidade === 0}>
+          -
+        </button>
+        <p>{quantidade}</p>
         <button
           onClick={() =>
             addItemBag(Object.assign(product, { lojaAtual: currentStore.name }))

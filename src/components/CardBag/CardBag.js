@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from './styled';
-import example from '../../assets/example.png';
 
 import trash from '../../assets/trash.svg';
 
-const CardBag = ({ item }) => {
+const CardBag = ({ item, addItemBag, removeItemBag, currentStore }) => {
   const [stringValue, setStringValue] = useState();
   useEffect(() => {
     const newValue =
@@ -22,9 +21,20 @@ const CardBag = ({ item }) => {
           <p className="value">{`R$ ${stringValue}`}</p>
         </div>
         <div className="sum">
-          <button>-</button>
+          <button
+            onClick={() => removeItemBag(item._id)}
+            disabled={item.quantidade === 0}
+          >
+            -
+          </button>
           <p>{item.quantidade}</p>
-          <button>+</button>
+          <button
+            onClick={() =>
+              addItemBag(Object.assign(item, { lojaAtual: currentStore.name }))
+            }
+          >
+            +
+          </button>
         </div>
         <div className="trash">
           <button>
