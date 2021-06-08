@@ -43,13 +43,6 @@ const Products = ({
           return (
             <ProductCard
               key={item._id}
-              id={item._id}
-              picture={item.imgs[1].url}
-              name={item.name}
-              items={item.description}
-              timeInicial={item.createdAt}
-              timeFinal={item.updatedAt}
-              value={item.pricing}
               product={item}
               addItemBag={addItemBag}
               currentStore={currentStore}

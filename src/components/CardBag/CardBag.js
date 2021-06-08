@@ -3,7 +3,13 @@ import { Card } from './styled';
 
 import trash from '../../assets/trash.svg';
 
-const CardBag = ({ item, addItemBag, removeItemBag, currentStore }) => {
+const CardBag = ({
+  item,
+  addItemBag,
+  removeItemBag,
+  currentStore,
+  removeAll,
+}) => {
   const [stringValue, setStringValue] = useState();
   useEffect(() => {
     const newValue =
@@ -11,7 +17,7 @@ const CardBag = ({ item, addItemBag, removeItemBag, currentStore }) => {
     setStringValue(newValue);
   });
   return (
-    <Card image={item.imgs[1].url}>
+    <Card image={item.imgs[0].url}>
       <p className="store-title">{item.lojaAtual}</p>
       <div className="content-card">
         <div className="image" />
@@ -36,7 +42,12 @@ const CardBag = ({ item, addItemBag, removeItemBag, currentStore }) => {
             +
           </button>
         </div>
-        <div className="trash">
+        <div
+          className="trash"
+          onClick={() => {
+            removeAll(item);
+          }}
+        >
           <button>
             <img src={trash} />
           </button>

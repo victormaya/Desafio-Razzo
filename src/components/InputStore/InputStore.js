@@ -12,6 +12,7 @@ const InputStore = ({ setPage, setCurrentStore }) => {
         'https://api-test-carrinho.herokuapp.com/business'
       );
       setStoreData(data.data);
+      console.log(data.data);
     } catch (error) {
       console.error(error);
     }
@@ -24,7 +25,7 @@ const InputStore = ({ setPage, setCurrentStore }) => {
   return (
     <div>
       <DivInput>
-        <input placeholder="Buscar estabelecimento" />
+        <input placeholder="Buscar estabelecimento" disabled />
       </DivInput>
 
       <DivCards>
@@ -32,10 +33,7 @@ const InputStore = ({ setPage, setCurrentStore }) => {
           return (
             <div
               key={item._id}
-              onClick={() => [
-                setPage('product'),
-                setCurrentStore(item),
-              ]}
+              onClick={() => [setPage('product'), setCurrentStore(item)]}
             >
               <StoreCard
                 image={item.assets.logo}

@@ -81,9 +81,11 @@ export const Card = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     > button {
       background: none;
       border: none;
+      cursor: pointer;
     }
   }
 `;

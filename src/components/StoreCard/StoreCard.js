@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card } from './styled';
-import example from '../../assets/example.png';
 
 const StoreCard = ({
   image,

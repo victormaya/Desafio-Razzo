@@ -41,11 +41,20 @@ const App = () => {
     setItemsBagVisible(contador);
   };
 
+  const removeAll = (item) => {
+    const removido = itemsBag.filter((elemento) => {
+      return elemento._id != item._id;
+    });
+    setItemsBag(removido);
+    tratarArrays(removido);
+  };
+
   const addItemBag = (item) => {
     let lista = [...itemsBag, item];
     setItemsBag([...itemsBag, item]);
     tratarArrays(lista);
   };
+
   const removeItemBag = (idItem) => {
     const found = itemsBag.find((item) => item._id === idItem);
     const elemento = itemsBag.indexOf(found);
@@ -59,7 +68,7 @@ const App = () => {
         <Container>
           <Header>
             <div className="start-items">
-              <div className='logo'>
+              <div className="logo">
                 <img src={logo} alt="Razzo" />
               </div>
               <a className="title-dashboard">Dashboard</a>
@@ -114,6 +123,7 @@ const App = () => {
                       addItemBag={addItemBag}
                       removeItemBag={removeItemBag}
                       currentStore={currentStore}
+                      removeAll={removeAll}
                     />
                   );
                 })}
